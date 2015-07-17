@@ -12,7 +12,7 @@ App.factory('myHttpInterceptor', function($rootScope, $q) {
       $rootScope.status = 'HTTP RESPONSE ERROR ' + rejection.status + '\n' +
                           rejection.data;
       return $q.reject(rejection);
-    },
+    }
   };
 });
 
@@ -32,16 +32,16 @@ App.config(function($routeProvider) {
   $routeProvider.when('/', {
     controller : 'MainCtrl',
     templateUrl: '/partials/main.html',
-    resolve    : { 'guestService': 'guestService' },
+    resolve    : { 'guestService': 'guestService' }
   });
   $routeProvider.when('/invite', {
     controller : 'InsertCtrl',
-    templateUrl: '/partials/insert.html',
+    templateUrl: '/partials/insert.html'
   });
   $routeProvider.when('/update/:id', {
     controller : 'UpdateCtrl',
     templateUrl: '/partials/update.html',
-    resolve    : { 'guestService': 'guestService' },
+    resolve    : { 'guestService': 'guestService' }
   });
   $routeProvider.otherwise({
     redirectTo : '/'
@@ -83,7 +83,7 @@ App.controller('InsertCtrl', function($scope, $rootScope, $log, $http, $routePar
   $scope.submitInsert = function() {
     var guest = {
       first : $scope.first,
-      last : $scope.last, 
+      last : $scope.last
     };
     $rootScope.status = 'Creating...';
     $http.post('/rest/insert', guest)
